@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import store from './store'
-import PageWrapper from './PageWrapper'
-import PageHeader from './PageHeader'
+import PageWrapper from './styled-components/PageWrapper'
+import PageHeader from './styled-components/PageHeader'
 import InputContainer from './InputContainer'
 import ListContainer from './ListContainer'
 

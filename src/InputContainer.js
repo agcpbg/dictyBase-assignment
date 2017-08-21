@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import InputWrapper from './InputWrapper'
-import InputField from './InputField'
-import InputButton from './InputButton'
+import InputWrapper from './styled-components/InputWrapper'
+import InputField from './styled-components/InputField'
+import InputButton from './styled-components/InputButton'
 import { addListItem } from './reducer/listItems'
 
-class InputContainer extends React.Component {
+class InputContainer extends Component {
   constructor(props) {
     super(props)
 
@@ -29,7 +29,7 @@ class InputContainer extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <InputWrapper>
         <InputField type="text" name="localItemName" value={this.state.localItemName} onChange={this.handleChange} />
         <InputButton onClick={this.handleSubmit}>Add Item</InputButton>

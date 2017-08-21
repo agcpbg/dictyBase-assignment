@@ -5,6 +5,7 @@ const RemoveButton = styled.button`
   background-color: #ce92b5;
   font-size: 1em;
   border: none;
+  margin-right: 0.5em;
 
   &:active {
     transform: translateY(1px);

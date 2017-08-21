@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import ListWrapper from './ListWrapper'
-import ListHeader from './ListHeader'
-import ListItemWrapper from './ListItemWrapper'
-import ListItemText from './ListItemText'
-import RemoveButton from './RemoveButton'
+import ListWrapper from './styled-components/ListWrapper'
+import ListHeader from './styled-components/ListHeader'
+import ListItemWrapper from './styled-components/ListItemWrapper'
+import ListItemText from './styled-components/ListItemText'
+import RemoveButton from './styled-components/RemoveButton'
 import { deleteListItem } from './reducer/listItems'
 
 const ListContainer = ({ listItems, sendOnClick }) => {

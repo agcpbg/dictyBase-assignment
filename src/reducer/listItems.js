@@ -1,25 +1,26 @@
 // action types
-const ADD_LIST_ITEM = 'ADD_LIST_ITEM';
-const DELETE_LIST_ITEM = 'DELETE_LIST_ITEM'
+const ADD_LIST_ITEM = "ADD_LIST_ITEM"
+const DELETE_LIST_ITEM = "DELETE_LIST_ITEM"
 
 // action creators
-export const addListItem = item => ({ type: ADD_LIST_ITEM, item });
-export const deleteListItem = item => ({ type: DELETE_LIST_ITEM, item });
+export const addListItem = item => ({ type: ADD_LIST_ITEM, item })
+export const deleteListItem = index => ({ type: DELETE_LIST_ITEM, index })
 
 // initial state
-const listItems = [];
+const listItems = []
 
 // reducer
-export default function (state = listItems, action) {
+export default function(state = listItems, action) {
   switch (action.type) {
     case ADD_LIST_ITEM:
-      return [...state, action.item];
+      return [...state, action.item]
 
     case DELETE_LIST_ITEM:
-      let newStateArr = state.filter(item => item !== action.item)
-      return [...newStateArr]
+      let newStateArr = [...state]
+      newStateArr.splice(action.index, 1)
+      return newStateArr
 
     default:
-      return state;
+      return state
   }
 }

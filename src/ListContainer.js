@@ -1,25 +1,28 @@
-import React from 'react'
-import { connect } from 'react-redux';
-import ListWrapper from './styled-components/ListWrapper'
-import ListHeader from './styled-components/ListHeader'
-import ListItemWrapper from './styled-components/ListItemWrapper'
-import ListItemText from './styled-components/ListItemText'
-import RemoveButton from './styled-components/RemoveButton'
-import { deleteListItem } from './reducer/listItems'
+import React from "react"
+import { connect } from "react-redux"
+import ListWrapper from "./styled-components/ListWrapper"
+import ListHeader from "./styled-components/ListHeader"
+import ListItemWrapper from "./styled-components/ListItemWrapper"
+import ListItemText from "./styled-components/ListItemText"
+import RemoveButton from "./styled-components/RemoveButton"
+import { deleteListItem } from "./reducer/listItems"
 
 const ListContainer = ({ listItems, sendOnClick }) => {
   return (
     <ListWrapper>
-      <ListHeader>My items ({listItems.length})</ListHeader>
-      {
-        listItems.length ?
-        listItems.map(item => (
-            <ListItemWrapper key={item}>
-              <ListItemText>{item}</ListItemText>
-              <RemoveButton onClick={() => sendOnClick(item)}>x</RemoveButton>
-            </ListItemWrapper>
-        )) : null
-      }
+      <ListHeader>
+        My items ({listItems.length})
+      </ListHeader>
+      {listItems.length
+        ? listItems.map((item, index) =>
+            <ListItemWrapper key={`${index}-${item}`}>
+              <ListItemText>
+                {item}
+              </ListItemText>
+              <RemoveButton onClick={() => sendOnClick(index)}>x</RemoveButton>
+            </ListItemWrapper>,
+          )
+        : null}
     </ListWrapper>
   )
 }
@@ -27,13 +30,13 @@ const ListContainer = ({ listItems, sendOnClick }) => {
 // container
 
 const mapState = ({ listItems }) => ({
-  listItems
-});
+  listItems,
+})
 
 const mapDispatch = dispatch => ({
-  sendOnClick: (item) => {
-    dispatch(deleteListItem(item))
-  }
-});
+  sendOnClick: index => {
+    dispatch(deleteListItem(index))
+  },
+})
 
-export default connect(mapState, mapDispatch)(ListContainer);
+export default connect(mapState, mapDispatch)(ListContainer)
